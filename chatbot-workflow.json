@@ -1,0 +1,90 @@
+{
+  "name": "chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "availableInChat": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -304,
+        -112
+      ],
+      "id": "6e18a0f5-e869-447a-b6b9-d287ca5a4145",
+      "name": "When chat message received",
+      "webhookId": "ab88541d-2900-4dd7-a8f1-c050cb31a3d7"
+    },
+    {
+      "parameters": {
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        -32,
+        -112
+      ],
+      "id": "52e952cd-d2a5-4f6e-ad77-ae6fb44455d3",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -112,
+        128
+      ],
+      "id": "bdd2ccd7-6621-46ac-8e78-0e2f17efcf81",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "3BSh9ugHHLVHNxMk",
+          "name": "Google Gemini(PaLM) Api account 106182"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "83308063-af9a-48a2-9baa-3af7a91aae13",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "969257b09ad2942bbaff2e2288304f4969030574d109cdeca05bf11f630884df"
+  },
+  "id": "pb1XiT6DzQRJXwvC",
+  "tags": []
+}
